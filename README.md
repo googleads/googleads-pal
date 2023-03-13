@@ -1,0 +1,1 @@
+## Google Ads Programmatic Access Libraries (PAL)
