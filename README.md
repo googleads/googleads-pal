@@ -6,5 +6,7 @@ This project hosts samples for the [PAL SDKs](//developers.google.com/ad-manager
 
 *   [HTML5](//github.com/googleads/googleads-pal/tree/main/html5) -
     Example PAL HTML5 setup.
+*   [Android](//github.com/googleads/googleads-pal/tree/main/android) -
+    Example PAL Android setup.
 
 Other PAL SDK samples will be added in the future.
