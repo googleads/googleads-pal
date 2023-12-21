@@ -1,0 +1,104 @@
+<html>
+<head>
+  <script
+      src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+  <script src="//imasdk.googleapis.com/pal/sdkloader/cast_pal.js"></script>
+</head>
+<body>
+  <cast-media-player></cast-media-player>
+  <script>
+    const castContext = cast.framework.CastReceiverContext.getInstance();
+    const playerManager = castContext.getPlayerManager();
+    // Allowing storage is necessary to enable personalized ads.
+    const consentSettings = new goog.cast.pal.ConsentSettings();
+    consentSettings.allowStorage = true;
+    const nonceLoader = new goog.cast.pal.NonceLoader(consentSettings);
+    // The existence of a nonce manager will prove that pal is being used
+    // with the current media object.
+    let nonceManager = null;
+
+    // Flag used to identify first instance of playback in session.
+    let playbackDidStart = false;
+
+    // Configures and requests the NonceManager.
+    // @return Promise promise that resolves when nonceManager is returned
+    const requestNonceManager = () => {
+      const request = new goog.cast.pal.NonceRequest();
+      request.adWillAutoPlay = true;
+      request.adWillPlayMuted = true;
+      request.continuousPlayback = false;
+      request.descriptionUrl = 'https://example.com';
+      request.iconsSupported = true;
+      request.playerType = 'Sample Player Type';
+      request.playerVersion = '1.0';
+      request.ppid = 'Sample PPID';
+      request.sessionId = 'Sample SID';
+      request.url = 'https://developers.google.com/ad-manager/pal/html5';
+      request.videoHeight = 480;
+      request.videoWidth = 640;
+      // We are returning a promise.
+      return nonceLoader.loadNonceManager(request);
+    };
+
+    // We'll need to attach a nonce to MediaInfo objects, when they are loaded.
+    playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, (request) => {
+      if (!request?.media?.vmapAdsRequest?.adTagUrl) {
+        // We are only requesting nonces for media with an attached VMAP.
+        return;
+      }
+      return requestNonceManager()
+        .then((nm) => {
+          nonceManager = nm;
+          // We are generating a nonce and adding it to the existing VMAP url as the
+          // query parameter 'paln'.
+          const nonce = nonceManager.getNonce();
+          let vmapUrl = new URL(request.media.vmapAdsRequest.adTagUrl);
+          vmapUrl.searchParams.set('paln', nonce);
+          request.media.vmapAdsRequest.adTagUrl = vmapUrl.toString();
+
+          return request;
+        })
+        .catch((error) => {
+          console.warn('Nonce request failed with error: ');
+          console.error(error);
+
+          // Rather than failing, we fall back to requesting ads without the PAL nonce.
+          return request;
+        });
+    });
+
+    // Register the start of playback.
+    playerManager.addEventListener(cast.framework.events.EventType.PLAYING, () => {
+      if (playbackDidStart) return;
+
+      playbackDidStart = true;
+      nonceManager?.sendPlaybackStart();
+    });
+
+    // Register any interactions with the player.
+    const interactionEvents = [
+      cast.framework.events.EventType.REQUEST_SEEK,
+      cast.framework.events.EventType.REQUEST_STOP,
+      cast.framework.events.EventType.REQUEST_PAUSE,
+      cast.framework.events.EventType.REQUEST_PLAY,
+      cast.framework.events.EventType.REQUEST_SKIP_AD,
+      cast.framework.events.EventType.REQUEST_PLAY_AGAIN,
+      cast.framework.events.EventType.REQUEST_PLAYBACK_RATE_CHANGE,
+      cast.framework.events.EventType.REQUEST_VOLUME_CHANGE,
+      cast.framework.events.EventType.REQUEST_USER_ACTION,
+      cast.framework.events.EventType.REQUEST_FOCUS_STATE,
+    ];
+    playerManager.addEventListener(interactionEvents, (event) => {
+      nonceManager?.sendAdTouch(event);
+    });
+
+    // Register the end of playback.
+    playerManager.addEventListener(cast.framework.events.EventType.MEDIA_FINISHED, () => {
+      playbackDidStart = false;
+      nonceManager?.sendPlaybackEnd();
+    });
+
+    castContext.start();
+  </script>
+</body>
+</html>
