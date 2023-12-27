@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
   private Button adClickButton;
 
-  private Button sendImpressionButton;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -59,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
     nonceLoader = new NonceLoader(this, consentSettings);
 
     adClickButton = findViewById(R.id.send_click_button);
-    sendImpressionButton = findViewById(R.id.send_impression_button);
 
     logView = findViewById(R.id.log_view);
     logView.setMovementMethod(new ScrollingMovementMethod());
@@ -101,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 exampleMakeAdRequest(DEFAULT_AD_TAG + "&givn=" + nonceString);
 
                 adClickButton.setEnabled(true);
-                sendImpressionButton.setEnabled(true);
               }
             })
         .addOnFailureListener(
