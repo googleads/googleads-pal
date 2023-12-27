@@ -1,0 +1,44 @@
+name: Build Status
+
+# Step 1: Build on pull-requests or pushes to main
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  # Step 2: Build Android sample
+  build-java:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        regex:
+        - "android"
+    steps:
+      - name: Set up JDK 17
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+
+      - name: Clone Repo
+        uses: actions/checkout@v1
+
+      - name: Set commit range (push to the main branch, for example, merge)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: echo "COMMIT_RANGE="${{ github.event.before }}.."" >> $GITHUB_ENV
+
+      - name: Set commit range (pull request)
+        if: github.event_name == 'pull_request'
+        run: echo "COMMIT_RANGE="HEAD~.."" >> $GITHUB_ENV
+
+      - name: Build
+        run: .github/workflows/build/build.sh
+        shell: bash
+        env:
+          COMMIT_RANGE: ${{ env.COMMIT_RANGE }}
+          REGEX: ${{ matrix.regex }}
