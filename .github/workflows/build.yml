@@ -51,13 +51,7 @@ jobs:
       fail-fast: false
       matrix:
         regex:
-        # copybara:strip_begin
-        # LINT.IfChange
-        # copybara:strip_end
         - "ios"
-        # copybara:strip_begin
-        # LINT.ThenChange(//depot/google3/googlemac/iPhone/InteractiveMediaAds/IMA/ios/samples/clientSide/copy.bara.sky)
-        # copybara:strip_end
     steps:
       - name: Clone Repository
         uses: actions/checkout@v1
