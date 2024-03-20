@@ -12,5 +12,5 @@ This project hosts samples for the [PAL SDKs](//developers.google.com/ad-manager
     Example PAL iOS setup.
 *   [Cast](//github.com/googleads/googleads-pal/tree/main/cast) -
     Example PAL Cast setup.
-
-Other PAL SDK samples will be added in the future.
+*   [CTV (Tizen)](//github.com/googleads/googleads-pal/tree/main/ctv/tizen) -
+    Example PAL CTV (Tizen) setup.
