@@ -1,0 +1,89 @@
+/* Copyright 2024 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. */
+
+* {
+    font-family: Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 50px auto;
+    background-color: #fff;
+}
+
+header h1 {
+    font-size: 108px;
+    margin: 0;
+}
+
+header h2 {
+    font-size: 54px;
+    margin: 0;
+    color: #888;
+    font-style: italic;
+}
+
+nav ul {
+    list-style: none;
+    padding: 20px;
+    display: block;
+    clear: right;
+    background-color: #666;
+    padding-left: 4px;
+    height: 48px;
+}
+
+nav ul li {
+    display: inline;
+    padding: 0 20px 5px 10px;
+    border-right: 1px solid #ccc;
+}
+
+nav ul li a {
+    color: #efd3d3;
+    text-decoration: none;
+    font-size: 39px;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+article > header h1 {
+    font-size: 60px;
+    margin-left: 14px;
+}
+
+article > header h1 a {
+    color: #993;
+}
+
+article > header h1 img {
+    vertical-align:middle;
+}
+
+article > section header h1 {
+    font-size: 48px;
+}
+
+article p {
+    clear: both;
+}
+
+footer p {
+    text-align: center;
+    font-size: 36px;
+    color: #888;
+    margin-top: 30px;
+}
