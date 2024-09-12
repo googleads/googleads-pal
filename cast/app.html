@@ -21,11 +21,13 @@
     let playbackDidStart = false;
 
     // Configures and requests the NonceManager.
+    // The NonceRequest parameters set here are example parameters.
+    // You should set your parameters based on your own app characteristics.
     // @return Promise promise that resolves when nonceManager is returned
     const requestNonceManager = () => {
       const request = new goog.cast.pal.NonceRequest();
       request.adWillAutoPlay = true;
-      request.adWillPlayMuted = true;
+      request.adWillPlayMuted = false;
       request.continuousPlayback = false;
       request.descriptionUrl = 'https://example.com';
       request.iconsSupported = true;

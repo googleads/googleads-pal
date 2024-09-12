@@ -61,16 +61,19 @@ function init() {
   const consentSettings = new goog.pal.ConsentSettings();
   consentSettings.allowStorage = getConsentToStorage();
 
-  nonceLoader = new goog.pal.NonceLoader();
+  nonceLoader = new goog.pal.NonceLoader(consentSettings);
 }
 
 /**
  * Generates a nonce with sample arguments and logs it to the console.
+ *
+ * The NonceRequest parameters set here are example parameters.
+ * You should set your parameters based on your own app characteristics.
  */
 function generateNonce() {
   const request = new goog.pal.NonceRequest();
   request.adWillAutoPlay = true;
-  request.adWillPlayMuted = true;
+  request.adWillPlayMuted = false;
   request.continuousPlayback = false;
   request.descriptionUrl = 'https://example.com';
   request.iconsSupported = true;

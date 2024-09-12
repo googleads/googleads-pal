@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
   /**
    * Makes a call to the SDK to create a nonce manager. In a typical PAL app, this would be called
    * at the start of the media stream.
+   *
+   * <p>The NonceRequest parameters set here are example parameters. You should set your parameters
+   * based on your own app characteristics.
    */
   public void generateNonceForAdRequest(View view) {
     logMessage("Generate Nonce Request");
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             .videoPlayerHeight(480)
             .videoPlayerWidth(640)
             .willAdAutoPlay(true)
-            .willAdPlayMuted(true)
+            .willAdPlayMuted(false)
             .build();
 
     nonceLoader

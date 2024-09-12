@@ -37,7 +37,10 @@ static NSString *const PALTitleAlertOKAction = @"OK";
 
 /**
  * Requests a new nonce manager with a request containing arbitrary test values like a (sane) user
- * might supply. Displays the nonce or error on success. This should be called once per strea
+ * might supply. Displays the nonce or error on success. This should be called once per stream.
+ *
+ * The PALNonceRequest parameters set here are example parameters.
+ * You should set your parameters based on your own app characteristics.
  */
 - (IBAction)requestNonceManager {
   PALNonceRequest *request = [[PALNonceRequest alloc] init];
