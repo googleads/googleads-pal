@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
     NonceRequest nonceRequest =
         NonceRequest.builder()
             .descriptionURL("https://example.com/content1")
-            .omidVersion("1.0.0")
             .omidPartnerName("Example Publisher")
             .playerType("ExamplePlayerType")
             .playerVersion("1.0.0")
