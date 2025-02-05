@@ -58,7 +58,6 @@ static NSString *const PALTitleAlertOKAction = @"OK";
   // OM SDK is only available on iOS.
   request.OMIDPartnerName = @"SamplePartner";
   request.OMIDPartnerVersion = @"6.2.1";
-  request.OMIDVersion = @"1.2.3";
 #endif
 
   if (self.nonceManager) {
