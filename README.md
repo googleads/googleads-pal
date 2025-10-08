@@ -1,5 +1,7 @@
 ## Google Ads Programmatic Access Libraries (PAL)
 
+![Build status](https://github.com/googleads/googleads-pal/actions/workflows/build.yml/badge.svg)
+
 This project hosts samples for the [PAL SDKs](//developers.google.com/ad-manager/pal).
 
 ### Samples Breakdown
