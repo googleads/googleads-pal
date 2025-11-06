@@ -19,14 +19,8 @@ static NSString *const PALTitleAlertOKAction = @"OK";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  /**
-   * The default value for 'allowStorage' and
-   * 'directedForChildOrUnknownAge' is 'NO', but should be updated once the
-   * appropriate consent has been gathered. Publishers should either
-   * integrate with a CMP or use a different method to handle storage consent.
-   */
+
   PALSettings *settings = [[PALSettings alloc] init];
-  settings.allowStorage = YES;
   settings.directedForChildOrUnknownAge = NO;
 
   self.nonceLoader = [[PALNonceLoader alloc] initWithSettings:settings];
