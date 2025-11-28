@@ -47,15 +47,7 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // The default value for allowStorage() is false, but can be
-    // changed once the appropriate consent has been gathered. The
-    // getConsentToStorage() method is a placeholder for the publisher's own
-    // method of obtaining user consent, either by integrating with a CMP or
-    // based on other methods the publisher chooses to handle storage consent.
-    boolean isStorageAllowed = getConsentToStorage();
-
-    ConsentSettings consentSettings =
-        ConsentSettings.builder().allowStorage(isStorageAllowed).build();
+    ConsentSettings consentSettings = ConsentSettings.builder().build();
 
     // It is important to instantiate the NonceLoader as early as possible to
     // allow it to initialize and preload data for a faster experience when
@@ -174,11 +166,6 @@ public class MainActivity extends AppCompatActivity {
 
   private void exampleMakeAdRequest(String adTagUrl) {
     // Code to make your ad request.
-  }
-
-  private boolean getConsentToStorage() {
-    // Code to ask the user for storage consent.
-    return false;
   }
 
   private void logMessage(String message) {
