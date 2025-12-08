@@ -6,13 +6,18 @@ android {
 
     // Java 11 required by Gradle 7.0.2
     compileOptions {
+        // PAL requires app desugaring as of version 23.0.0.
+        // [START app_desugaring]
+        coreLibraryDesugaringEnabled true
+        // [END app_desugaring]
+
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
 
     defaultConfig {
         applicationId "com.example.palsampleapp"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 34
         versionCode 1
         versionName "1.0"
@@ -32,8 +37,9 @@ repositories {
 }
 
 dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     // [START pal_sdk_version]
-    implementation 'com.google.android.gms:play-services-pal:22.1.0'
+    implementation 'com.google.android.gms:play-services-pal:23.0.0'
     // [END pal_sdk_version]
 }
