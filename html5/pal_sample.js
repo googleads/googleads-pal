@@ -21,18 +21,7 @@ let videoElement;
 let nonceLoader;
 let managerPromise;
 let nonceManager;
-let storageConsent = true;
 let playbackStarted = false;
-
-/**
- * A placeholder for the publisher's own method of obtaining user
- * consent, either by integrating with a CMP or based on other
- * methods the publisher chooses to handle storage consent.
- * @return {boolean} Whether storage consent has been given.
- */
-function getConsentToStorage() {
-  return storageConsent;
-}
 
 /**
  * Initializes the PAL loader.
@@ -56,10 +45,12 @@ function init() {
   document.getElementById('generate-nonce')
       .addEventListener('click', generateNonce);
 
-  // The default value for `allowStorage` is false, but can be
-  // changed once the appropriate consent has been gathered.
+  // The default value for the `allowStorage` parameter is false, but you must
+  // set it to true to let PAL determine whether limited ads applies
+  // based on the TCF data. You can optionlly use the `forceLimitedAds`
+  // parameter to enable limited ads regardless of the TCF data.
   const consentSettings = new goog.pal.ConsentSettings();
-  consentSettings.allowStorage = getConsentToStorage();
+  consentSettings.allowStorage = true;
 
   nonceLoader = new goog.pal.NonceLoader(consentSettings);
 }
