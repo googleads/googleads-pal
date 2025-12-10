@@ -47,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    // By default, PAL automatically determines whether to enable Limited Ads based on the
-    // user's TCF (Transparency and Consent Framework) consent data on the device.
-    // You should only use the `ConsentSettings.Builder.forceLimitedAds` property if you need
-    // to manually override this automatic behavior to meet your app's specific requirements.
+    // By default, PAL automatically determines whether to enable limited ads
+    // based on the user's TCF (Transparency and Consent Framework) consent data
+    // on the device. If you must manually override the default behavior,
+    // for example, to meet your app's requirements, use the
+    // `ConsentSettings.Builder.forceLimitedAds` property.
     ConsentSettings consentSettings = ConsentSettings.builder().build();
 
     // It is important to instantiate the NonceLoader as early as possible to
