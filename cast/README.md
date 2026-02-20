@@ -46,8 +46,8 @@ on the same WiFi network and can connect to each other
         following object:```
         {
             "media": {
-                "contentId": "bbb",
-                "contentUrl": "https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/BigBuckBunny.mp4",
+                "contentId": "stock_video",
+                "contentUrl": "https://storage.googleapis.com/gvabox/media/samples/stock.mp4",
                 "entity": "myapp://playlist/1",
                 "streamType": "BUFFERED",
                 "vmapAdsRequest": {
@@ -56,8 +56,8 @@ on the same WiFi network and can connect to each other
             }
         }
         ```
-    1.  Click the "Send Request" button, and you should shortly see Big Buck
-        Bunny playing on the Cast device with periodic VMAP ads interspersed.
+    1.  Click the "Send Request" button, and you should shortly see a stock
+        video playing on the Cast device with periodic VMAP ads interspersed.
     1.  At the same time, in the Network tab, you should see that the
         `paln=[NONCE.GOES.HERE]` URL parameter was attached to the ad request.
 
