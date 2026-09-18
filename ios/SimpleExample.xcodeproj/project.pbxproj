@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,8 +13,8 @@
 		15C5C74121010A9F00134483 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15C5C74021010A9F00134483 /* Assets.xcassets */; };
 		15C5C74421010A9F00134483 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15C5C74221010A9F00134483 /* LaunchScreen.storyboard */; };
 		15C5C74721010A9F00134483 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C5C74621010A9F00134483 /* main.m */; };
-		A062D038230C72F6009F1981 /* ProgrammaticAccessLibrary.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A062D037230C72DB009F1981 /* ProgrammaticAccessLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A062D039230C72F8009F1981 /* ProgrammaticAccessLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A062D037230C72DB009F1981 /* ProgrammaticAccessLibrary.framework */; };
+		15C5C759210113EB00134483 /* PALSceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C5C758210113EB00134483 /* PALSceneDelegate.m */; };
+		17A457F2305C71E700F56AC8 /* GoogleProgrammaticAccessLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 17A457F1305C71E700F56AC8 /* GoogleProgrammaticAccessLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A062D038230C72F6009F1981 /* ProgrammaticAccessLibrary.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +41,8 @@
 		15C5C74321010A9F00134483 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15C5C74521010A9F00134483 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15C5C74621010A9F00134483 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A062D037230C72DB009F1981 /* ProgrammaticAccessLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProgrammaticAccessLibrary.framework; sourceTree = "<group>"; };
+		15C5C757210113EB00134483 /* PALSceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PALSceneDelegate.h; sourceTree = "<group>"; };
+		15C5C758210113EB00134483 /* PALSceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PALSceneDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A062D039230C72F8009F1981 /* ProgrammaticAccessLibrary.framework in Frameworks */,
+				17A457F2305C71E700F56AC8 /* GoogleProgrammaticAccessLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,9 +77,10 @@
 		15C5C73621010A9C00134483 /* SimpleExample */ = {
 			isa = PBXGroup;
 			children = (
-				A062D037230C72DB009F1981 /* ProgrammaticAccessLibrary.framework */,
 				15C5C73721010A9C00134483 /* AppDelegate.h */,
 				15C5C73821010A9C00134483 /* AppDelegate.m */,
+				15C5C757210113EB00134483 /* PALSceneDelegate.h */,
+				15C5C758210113EB00134483 /* PALSceneDelegate.m */,
 				15C5C73A21010A9C00134483 /* ViewController.h */,
 				15C5C73B21010A9C00134483 /* ViewController.m */,
 				15C5C73D21010A9D00134483 /* Main.storyboard */,
@@ -142,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 15C5C72B21010A9B00134483;
+			packageReferences = (
+				17A457F0305C71E700F56AC8 /* XCRemoteSwiftPackageReference "swift-package-manager-google-programmatic-access-library-ios" */,
+			);
 			productRefGroup = 15C5C73521010A9C00134483 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,6 +176,7 @@
 				15C5C73C21010A9C00134483 /* ViewController.m in Sources */,
 				15C5C74721010A9F00134483 /* main.m in Sources */,
 				15C5C73921010A9C00134483 /* AppDelegate.m in Sources */,
+				15C5C759210113EB00134483 /* PALSceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		17A457F0305C71E700F56AC8 /* XCRemoteSwiftPackageReference "swift-package-manager-google-programmatic-access-library-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-programmatic-access-library-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		17A457F1305C71E700F56AC8 /* GoogleProgrammaticAccessLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17A457F0305C71E700F56AC8 /* XCRemoteSwiftPackageReference "swift-package-manager-google-programmatic-access-library-ios" */;
+			productName = GoogleProgrammaticAccessLibrary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 15C5C72C21010A9B00134483 /* Project object */;
 }
