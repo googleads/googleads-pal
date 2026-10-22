@@ -40,10 +40,10 @@ static NSString *const PALTitleAlertOKAction = @"OK";
   PALNonceRequest *request = [[PALNonceRequest alloc] init];
   request.continuousPlayback = PALFlagOff;
   request.descriptionURL = [NSURL URLWithString:@"https://example.com/desc?key=val"];
-  request.iconsSupported = YES;
   request.playerType = @"AwesomePlayer";
   request.playerVersion = @"4.2.1";
   request.PPID = @"123987456";
+  request.skippablesSupported = YES;
   // Sample API framework integers. See PAL reference docs for more details.
   // https://developers.google.com/ad-manager/pal/ios/reference/Classes/PALNonceRequest#supportedapiframeworks
   request.supportedAPIFrameworks = [NSMutableSet setWithArray:@[ @2, @7, @9 ]];

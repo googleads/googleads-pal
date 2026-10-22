@@ -382,8 +382,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-programmatic-access-library-ios";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
