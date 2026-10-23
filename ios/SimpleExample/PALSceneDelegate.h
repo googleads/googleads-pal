@@ -1,12 +1,16 @@
 @import UIKit;
 
+NS_ASSUME_NONNULL_BEGIN
+
 /**
- * Scene delegate for SimpleExample.
+ * Scene delegate for Simple Example.
  *
  * Manages the application's UIWindow and root view controller lifecycle.
  */
 @interface PALSceneDelegate : UIResponder <UIWindowSceneDelegate>
 
-@property(nonatomic, strong) UIWindow *window;
+@property(nonatomic, strong, nullable) UIWindow *window;
 
 @end
+
+NS_ASSUME_NONNULL_END
